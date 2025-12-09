@@ -1,0 +1,33 @@
+% placeholder for 05_examples
+To illustrate the architecture, we outline several scenarios in which
+L0--L3 provide governance that is difficult to obtain from prompts
+alone. The examples are intentionally heterogeneous to emphasize
+cross-domain isolation and continuity.
+
+\paragraph{Example 1: Legal reasoning vs.\ medical reasoning.}
+In one project, an L1 layer is instantiated for legal reasoning under a
+specific jurisdiction. In a separate project, another L1 layer is used
+for clinical communication. L2 ensures that domain-specific rules (e.g.,
+evidentiary standards) are not silently imported into clinical
+explanations, and vice versa. L3 enforces that any legal answer carries
+an explicit separation between fact, inference, and unknown.
+
+\paragraph{Example 2: Long-horizon project continuity.}
+Consider a multi-week technical project where an AI assistant helps
+refine a system design. L2 maintains project-level constraints (such as
+a chosen architecture style or safety requirement) and re-applies them
+across sessions. L3 rejects outputs that regress on previously agreed
+constraints, forcing the system to either justify deviations or stay
+consistent.
+
+\paragraph{Example 3: Anti-fabrication discipline.}
+In a research or compliance setting, L0 imposes a strict
+fact/inference/unknown separation. When the base LLM proposes an answer,
+L3 inspects the trace for unsupported claims. If unresolved gaps remain,
+L3 can either request additional evidence (via tools) or downgrade the
+answer to an explicitly uncertain status, rather than silently
+hallucinating details.
+
+These examples are not exhaustive, but they demonstrate how a layered
+metacognitive architecture can turn informal prompting patterns into an
+explicit, auditable control structure.

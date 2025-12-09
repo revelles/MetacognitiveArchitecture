@@ -1,0 +1,49 @@
+% placeholder for 01_introduction
+The recent advances in large language models (LLMs) have produced
+systems capable of generating elaborate chains of reasoning on demand.
+However, these systems still lack an explicit, persistent structure for
+governing how reasoning is conducted over time, across domains, and
+under safety or reliability constraints. Prompts can request a specific
+style or discipline of reasoning, but the model does not maintain a
+non-overridable hierarchy of rules that outlives any single exchange.
+
+This paper proposes the \emph{Metacognitive Architecture \&
+Instruction Layers}, a four-layer governance framework designed to act
+as an Instructional Operating System for LLM-based systems. The
+architecture decomposes cognition into:
+
+\begin{itemize}
+    \item L0: Global Cognitive Rules,
+    \item L1: Domain Reasoning Layers,
+    \item L2: Project Governance, and
+    \item L3: Testing \& Enforcement.
+\end{itemize}
+
+The core idea is to separate \emph{content} (what the model says) from
+\emph{control} (how and under which constraints it is allowed to say it).
+This decoupling enables structured continuity, explicit anti-fabrication
+checks, and isolation between domains such as legal reasoning, clinical
+support, and systems design.
+
+\paragraph{Contributions.} The main contributions of this work are:
+\begin{enumerate}[label=(\arabic*)]
+    \item a conceptual and formal definition of a four-layer
+    metacognitive architecture for LLM-governed reasoning systems;
+
+    \item a control/content decoupling scheme in which L0--L1 define
+    reasoning content and L2--L3 define governance and enforcement;
+
+    \item worked examples illustrating how the architecture can be
+    instantiated in practical domains requiring continuity, procedural
+    rigor, and cross-domain isolation.
+\end{enumerate}
+
+The remainder of this paper is organized as follows. Section~\ref{sec:background}
+situates the work within related efforts in tool-augmented LLMs,
+guardrails, and system prompts. Section~\ref{sec:architecture} introduces
+the four layers and their interactions. Section~\ref{sec:formal-model}
+presents a formalization of the architecture. Section~\ref{sec:examples}
+gives worked examples, and Section~\ref{sec:related-work} discusses
+connections to prior work. We conclude in Section~\ref{sec:conclusion}.
+As a working reference, we denote this framework as
+\emph{Metacognitive Architecture \& Instruction Layers}~\cite{revelles2025metacognitive}.

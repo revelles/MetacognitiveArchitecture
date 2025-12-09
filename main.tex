@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+
+% --- Page layout ---
+\usepackage[margin=1in]{geometry}
+
+% --- Math and theorem tools ---
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+% --- Figures, tables, lists ---
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% --- Hyperlinks ---
+\usepackage[hidelinks]{hyperref}
+
+% --- TikZ for diagrams ---
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+
+% --- Theorem-like environments ---
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+% --- Metadata ---
+\title{Metacognitive Architecture \& Instruction Layers:\\
+A Modular Governance Framework for Reasoning Systems}
+\author{Francisco Revelles}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Large language models demonstrate increasingly sophisticated reasoning
+but lack persistent, hierarchical governance over cognition, continuity,
+and anti-fabrication safeguards. This paper introduces the
+\emph{Metacognitive Architecture \& Instruction Layers}, a modular
+framework designed to implement an Instructional Operating System (IOS)
+for AI systems. By decoupling content-production layers (L0--L1) from
+control-governance layers (L2--L3), the architecture enables structured,
+auditable, and domain-isolated reasoning suitable for high-stakes,
+long-horizon applications.
+\end{abstract}
+
+\section{Introduction}\label{sec:introduction}
+\input{sections/01_introduction}
+
+\section{Background and Motivation}\label{sec:background}
+\input{sections/02_background}
+
+\section{The Layered Architecture}\label{sec:architecture}
+\input{sections/03_architecture}
+
+\section{Formal Model}\label{sec:formal-model}
+\input{sections/04_formal_model}
+
+\section{Worked Examples and Applications}\label{sec:examples}
+\input{sections/05_examples}
+
+\section{Related Work}\label{sec:related-work}
+\input{sections/06_related_work}
+
+\section{Conclusion}\label{sec:conclusion}
+\input{sections/07_conclusion}
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}

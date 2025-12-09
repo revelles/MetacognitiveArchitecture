@@ -1,0 +1,118 @@
+% placeholder for 03_architecture
+The architecture decomposes cognition and governance into four layers,
+L0 through L3, forming a fixed hierarchy. Each layer has a distinct
+responsibility and a defined interface to the others.
+
+\paragraph{L0: Global Cognitive Rules.}
+L0 encodes non-overridable constraints on reasoning. Examples include:
+(1) an abstract $\rightarrow$ domain $\rightarrow$ task reasoning flow;
+(2) explicit separation of fact, inference, and unknown; and
+(3) anti-fabrication discipline. Intuitively, L0 states \emph{how} all
+reasoning must be structured, regardless of domain.
+
+\paragraph{L1: Domain Reasoning Layers.}
+Each domain (e.g., legal, medical, AI-systems design) receives its own
+L1 layer. An L1 layer specializes the global rules to domain-specific
+concepts, ontologies, and validity criteria. Domain isolation is enforced
+by ensuring that L1 layers cannot directly modify L0 or other L1 layers.
+
+\paragraph{L2: Project Governance.}
+L2 operates as an orchestrator and lifecycle manager. It is responsible
+for:
+\begin{itemize}
+    \item installing and updating L1 layers for specific projects;
+    \item enforcing project isolation (separating one active project
+    from another); and
+    \item preserving continuity, such as ensuring that earlier
+    commitments or constraints are remembered and respected.
+\end{itemize}
+
+\paragraph{L3: Testing \& Enforcement.}
+L3 represents the veto and validation layer. It receives proposed
+outputs together with their reasoning traces and evaluates them for
+compliance with L0--L2. L3 can:
+\begin{itemize}
+    \item reject outputs that violate anti-fabrication rules;
+    \item flag incomplete reasoning or missing conditions;
+    \item enforce readiness checks before an answer is released.
+\end{itemize}
+
+\subsection*{Layer Stack Diagram}
+
+Figure~\ref{fig:layer-stack} depicts the layer stack. The lower layers
+(L0--L1) are content-producing, while the upper layers (L2--L3) are
+control-governing.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        node distance = 0.6cm and 1.8cm,
+        >=Latex,
+        layer/.style={
+            draw,
+            rounded corners,
+            thick,
+            minimum width=6cm,
+            minimum height=0.9cm,
+            align=center
+        },
+        io/.style={
+            draw,
+            thick,
+            minimum width=3.2cm,
+            minimum height=0.9cm,
+            align=center
+        },
+        arrow/.style={
+            -{Latex[length=3mm]},
+            thick
+        },
+        note/.style={
+            align=left,
+            font=\footnotesize
+        }
+    ]
+
+    % I/O nodes
+    \node[io] (input)  {User / System Instructions $\sigma$};
+    \node[layer, below=of input] (L0) {L0: Global Cognitive Rules};
+    \node[layer, below=of L0] (L1) {L1: Domain Reasoning Layer(s)};
+    \node[layer, below=of L1] (L2) {L2: Project Governance};
+    \node[layer, below=of L2] (L3) {L3: Testing \& Enforcement};
+    \node[io, below=of L3] (output) {Released Output $y$};
+
+    % Base model box on the side
+    \node[layer, right=2.2cm of L1, minimum width=3.6cm] (llm) {Base Model\\$f_{\text{LLM}}$};
+
+    % Vertical arrows
+    \draw[arrow] (input)  -- (L0);
+    \draw[arrow] (L0)     -- (L1);
+    \draw[arrow] (L1)     -- (L2);
+    \draw[arrow] (L2)     -- (L3);
+    \draw[arrow] (L3)     -- (output);
+
+    % Interaction with base model
+    \draw[arrow] (L1.east) -- ++(0.8,0) |- (llm.north);
+    \draw[arrow] (llm.south) |- ++(-0.8,-0.2) -| (L2.east);
+
+    % Side annotations
+    \node[note, left=1.6cm of L1] (contentnote) {Content-producing\\layers};
+    \draw[dashed] (contentnote.east) -- ($(L1.west)!0.5!(L0.west)$);
+    \draw[dashed] (contentnote.east) -- ($(L1.west)!0.5!(L2.west)$);
+
+    \node[note, left=1.6cm of L3] (controlnote) {Control / governance\\layers};
+    \draw[dashed] (controlnote.east) -- ($(L2.west)!0.5!(L3.west)$);
+
+    \node[note, right=0.8cm of llm] (llmnote) {Stochastic mapping\\$\sigma \mapsto y$};
+
+    \end{tikzpicture}
+    \caption{Metacognitive Architecture as a layered pipeline. L0--L1
+    transform and constrain instructions before they reach the base
+    model $f_{\text{LLM}}$. L2 manages project-level governance and
+    continuity, while L3 performs testing and enforcement before any
+    output $y$ is released.}
+    \label{fig:layer-stack}
+\end{figure}
+
+Later sections will introduce a more formal model of these layers, as
+well as concrete instantiations in applied settings.

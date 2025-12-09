@@ -1,0 +1,29 @@
+% placeholder for 06_related_work
+The proposed architecture intersects multiple research threads, including
+tool-augmented LLMs, AI safety and alignment, program synthesis and
+verification, and cognitive architectures.
+
+\paragraph{Tool-augmented and agentic LLMs.}
+Work on tool use and agents gives LLMs the ability to call external
+functions, maintain working memory, or coordinate multiple roles.
+However, these frameworks often treat high-level governance as an
+implementation detail rather than a first-class object. The present
+architecture can be viewed as a way to factor such systems into
+explicit, named layers with clearly articulated responsibilities.
+
+\paragraph{Safety and guardrails.}
+Guardrail systems define policies about allowed content and sometimes
+about required checks. Our L3 layer plays a complementary role: it
+provides a structural place where policy enforcement, readiness checks,
+and verification can be composed and reasoned about.
+
+\paragraph{Cognitive architectures.}
+Classical cognitive architectures and metacognition research study how
+systems can monitor and regulate their own reasoning processes. The
+Metacognitive Architecture \& Instruction Layers reinterprets these
+ideas in the specific context of LLM-governed systems, emphasizing the
+need for persistent, hierarchical instruction governance.
+
+A more detailed comparison with specific systems and frameworks can be
+developed as the architecture is instantiated in concrete
+implementations.

@@ -1,0 +1,35 @@
+% placeholder for 02_background
+This section situates the proposed architecture relative to existing
+approaches for controlling and structuring LLM behavior. We highlight
+three threads: (i) prompt engineering and system prompts, (ii) tool and
+agent frameworks, and (iii) safety, guardrail, and verification work.
+
+\paragraph{Prompt engineering and system prompts.}
+Much of the practical control over LLM behavior today is expressed
+through long system prompts, templates, and few-shot examples. These
+techniques can encode style, constraints, or domain-specific rules, but
+they lack persistent structure: there is no native separation between
+global rules and per-project instructions, and no explicit notion of
+testing and enforcement layers.
+
+\paragraph{Tools and multi-agent frameworks.}
+Agent and tool frameworks introduce explicit roles, enabling models to
+call external tools (search, code execution, retrieval) and to subdivide
+tasks across multiple agents. While these frameworks introduce a form of
+structure, they typically do not formalize a layered governance model
+over cognition itself. The question of \emph{who} enforces global rules
+and \emph{how} cross-domain isolation is guaranteed remains loosely
+specified.
+
+\paragraph{Safety, guardrails, and verification.}
+Guardrail systems and safety policies attempt to prevent models from
+emitting harmful or disallowed content. Verification-oriented work
+checks individual answers or proofs for correctness. These directions
+address important aspects of risk, but usually at the level of content
+filtering or post-hoc checking, rather than a general metacognitive
+architecture that governs how reasoning is structured from the outset.
+
+The Metacognitive Architecture \& Instruction Layers proposed in this
+paper can be seen as a unifying abstraction over these threads. It
+organizes the control space into a fixed hierarchy of layers (L0--L3)
+that can host prompts, tools, and guardrails in a principled manner.
